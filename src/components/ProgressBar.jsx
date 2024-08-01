@@ -14,7 +14,7 @@ const ProgressBar = ({ step, onStepChange }) => {
     <div
       className={`${
         step === 0 ? "hidden" : "flex"
-      } justify-center items-center absolute top-32 left-1/2 transform -translate-x-1/2 z-50`}
+      } justify-center items-center absolute top-30 md:top-32 left-1/2 transform -translate-x-1/2 z-50 flex md:flex-nowrap`}
     >
       {steps.map((s, index) => (
         <React.Fragment key={s.id}>
@@ -22,15 +22,15 @@ const ProgressBar = ({ step, onStepChange }) => {
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
             onClick={() => onStepChange(index)}
-            className={`w-24 h-24 rounded-full flex items-center justify-center cursor-pointer ${
+            className={`w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center cursor-pointer ${
               index <= step ? "bg-yellow-500" : "bg-white"
-            }`}
+            } m-1`}
           >
-            <img src={s.image} alt={`Step ${s.id}`} className="w-14 h-14" />
+            <img src={s.image} alt={`Step ${s.id}`} className="w-10 h-10 md:w-14 md:h-14" />
           </motion.div>
           {index < steps.length - 1 && (
             <div
-              className={`w-14 h-2 ${
+              className={`w-2 h-2 md:w-14 ${
                 index < step ? "bg-yellow-500" : "bg-white"
               }`}
             />

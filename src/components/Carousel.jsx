@@ -51,7 +51,7 @@ const Carousel = () => {
         {images.map((src, index) => (
           <motion.div
             key={index}
-            className="flex-shrink-0 w-[24%] h-full flex justify-center items-center"
+            className="flex-shrink-0 md:w-[23%] w-[80%] h-full flex justify-center items-center"
           >
             <img src={src} alt={`Slide ${index}`} className="w-full h-full object-cover" />
           </motion.div>
