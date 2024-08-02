@@ -30,7 +30,7 @@ const IntroView = ({ onNext }) => {
       </p>
       <video
         src="Plonkkaa.mp4"
-        className="w-full max-w-[90%] md:max-w-[70%] mb-10"
+        className="w-full max-w-[90%] md:max-w-[70%] mb-10 rounded-lg border-4 border-[#F6D31F]"
         controls
         autoplay
       />
