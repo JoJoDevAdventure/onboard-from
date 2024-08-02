@@ -69,7 +69,6 @@ const Home = () => {
         });
 
         if (googleResponse.ok) {
-          setStep((prevStep) => prevStep + 1);
           setTimeout(() => {
       
           }, 5000);
