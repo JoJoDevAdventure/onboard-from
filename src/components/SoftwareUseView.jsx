@@ -80,7 +80,7 @@ const SoftwareUseView = ({ onNext }) => {
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
-      className="flex flex-col items-center justify-top bg-transparent h-full pb-10 gap-8"
+      className="flex flex-col items-center justify-top bg-transparent h-full pb-20 gap-8"
     >
       <h1 className="text-[36px] w-[70%] md:w-full md:text-[72px] text-[#F6D31F] mb-4 text-center">
         What software do you use?

@@ -32,7 +32,7 @@ const PersonalInfoView = ({ onNext }) => {
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
-      className="flex flex-col items-center justify-top bg-transparent h-[90vh] gap-8"
+      className="flex flex-col items-center justify-top bg-transparent h-full pb-20 gap-8"
     >
       <h1 className="text-[36px] md:text-[72px] text-[#F6D31F] text-center">
         Tell us more about you
