@@ -13,7 +13,7 @@ const ProgressBar = ({ step, onStepChange }) => {
   return (
     <div
       className={`${
-        step === 0 ? "hidden" : "flex"
+        step === 0 || step === 4 ? "hidden" : "flex"
       } justify-center items-center absolute top-30 md:top-32 left-1/2 transform -translate-x-1/2 z-50 flex md:flex-nowrap`}
     >
       {steps.map((s, index) => (

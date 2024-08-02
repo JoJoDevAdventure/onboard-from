@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const CustomBackButton = ({ onClick }) => {
+const CustomBackButton = ({ onClick, className }) => {
   return (
     <motion.div
       onClick={onClick}
-      className="text-[#F6D31F] cursor-pointer flex items-center justify-center space-x-2 absolute text-xl md:text-3xl z-30 md:top-8 md:left-40 top-20 left-6"
+      className={`text-[#F6D31F] cursor-pointer flex items-center justify-center space-x-2 absolute text-xl md:text-3xl z-20 md:top-8 md:left-40 top-20 left-6 ${className}`}
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
     >

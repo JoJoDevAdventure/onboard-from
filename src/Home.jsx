@@ -102,11 +102,11 @@ const Home = () => {
       <AnimatePresence>
         {step === 0 && <IntroView onNext={handleNext} />}
         {step > 0 && step < 5 && (
-          <div className="relative pt-28">
+          <div className={`relative ${step >= 4 ? "" : "pt-28"}`}>
             <CustomBackButton
               text="Back"
               onClick={handleBack}
-              className="absolute top-8 left-40"
+              className={`top-8 left-40 absolute ${ step >= 4 ? "-z-10" : "z-20"}`}
             >
               Back
             </CustomBackButton>
