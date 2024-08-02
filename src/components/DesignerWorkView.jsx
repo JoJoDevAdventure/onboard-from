@@ -34,46 +34,8 @@ const DesignerWorkView = ({ onNext }) => {
           onChange={handleFileChange}
           className="hidden"
         />
-        <motion.div
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.8 }}
-          className="bg-[#F6D31F] text-[#9B4191] rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center cursor-pointer"
-          onClick={triggerFileInput}
-        >
-          {designerWork ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 md:w-8 md:h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 md:w-8 md:h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              />
-            </svg>
-          )}
-        </motion.div>
         <p className="text-white w-40 md:w-60 text-center md:text-left">
-          {designerWork ? designerWork.name : "Upload one of your designs"}
+          Submit and join our team!
         </p>
         <CustomButton
           onClick={handleSubmit}

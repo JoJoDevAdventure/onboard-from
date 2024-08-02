@@ -12,12 +12,14 @@ import ThankYouView from './components/ThankYouView';
 const Home = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    age: '',
-    experience: '',
+    name: "",
+    email: "",
+    contact: "",
+    portfolio: "",
+    linkedin: "",
     software: [],
-    designerWork: null,
+    experience: [],
+    designStyle: [],
   });
 
   const handleNext = (newData) => {

@@ -12,3 +12,14 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
+
+
+@font-face {
+  font-family: 'Bebas Regular';
+  src: url('./fonts/Yel Yeah.otf') format('truetype'); /* Adjust the path according to your project structure */
+}
+
+
+h1, h2, h3 {
+  font-family: 'Bebas Regular', sans-serif;
+}
