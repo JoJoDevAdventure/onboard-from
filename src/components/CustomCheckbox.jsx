@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomCheckbox = ({ value, checked, onChange, label }) => {
   return (
-    <label className="flex items-center gap-2 cursor-pointer text-white">
+    <label className="flex items-top gap-2 cursor-pointer text-white text-xl mb-4">
       <div className="relative">
         <input
           type="checkbox"

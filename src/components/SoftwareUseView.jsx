@@ -90,7 +90,7 @@ const SoftwareUseView = ({ onNext }) => {
           <div
             key={software}
             onClick={() => toggleSoftware(software)}
-            className={`h-[150px] w-[150px] md:h-[200px] md:w-[200px] border border-[#F6D31F] rounded-3xl cursor-pointer flex justify-center items-center ${
+            className={`h-[120px] w-[120px] md:h-[200px] md:w-[200px] border border-[#F6D31F] rounded-3xl cursor-pointer flex justify-center items-center ${
               selectedSoftware.includes(software)
                 ? "bg-[#F6D31F] text-white"
                 : "bg-transparent"
@@ -99,7 +99,7 @@ const SoftwareUseView = ({ onNext }) => {
             <img
               src={softwareImages[software]}
               alt={software}
-              className="w-[120px] md:w-[160px]"
+              className="w-[90px] md:w-[90px]"
             />
           </div>
         ))}
