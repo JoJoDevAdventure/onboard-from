@@ -58,7 +58,9 @@ const DesignerWorkView = ({ onNext }) => {
       className="flex flex-col items-center justify-top bg-transparent h-full pb-20 gap-8"
     >
       <h1 className="text-[36px] w-[70%] md:w-full md:text-[72px] text-[#F6D31F] mb-4 text-center">
-        What's your target market?
+      Where are your designs /
+Online greeting ca
+products listed?
       </h1>
       <div className="flex flex-col items-start gap-4 mb-4 w-[90%] md:w-[50%]">
         {marketTargets.map((target) => (
@@ -72,6 +74,9 @@ const DesignerWorkView = ({ onNext }) => {
         ))}
       </div>
 
+      <h1 className="text-[36px] w-[70%] md:w-full md:text-[72px] text-[#F6D31F] mb-4 text-center">
+        Payment
+      </h1>
       <div className="flex flex-col items-start gap-4 mb-4 w-[90%] md:w-[50%]">
         <CustomCheckbox
           value="isCommissionBasedModel"
@@ -94,7 +99,7 @@ const DesignerWorkView = ({ onNext }) => {
 
       <CustomButton
         onClick={handleSubmit}
-        text={"Next"}
+        text={"Submit"}
         className="bg-[#F6D31F] py-4 px-4 w-[90%] md:w-[30%] text-[#9B4191] rounded-full"
       />
     </motion.div>

@@ -7,7 +7,7 @@ const ThankYouView = ({ formData }) => (
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
-      className="flex flex-col items-center justify-top bg-transparent h-[90vh] gap-2"
+      className="flex flex-col items-center justify-top bg-transparent h-[90vh] gap-2 z-50"
     >  
       <h1 className="md:text-[72px] text-[48px] text-[#F6D31F] text-center">Thank you!<br/>We'll contact you soon.</h1>
 

@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import CustomBackButton from "./components/CustomBackButton";
 import DesignerWorkView from "./components/DesignerWorkView";
 import IntroView from "./components/IntroView";
+import LoadingScreen from "./components/LoadingScreen"; // Import the LoadingScreen component
 import Navbar from "./components/NavBar";
 import PersonalInfoView from "./components/PersonalInfoView";
 import ProgressBar from "./components/ProgressBar";
@@ -11,6 +12,7 @@ import ThankYouView from "./components/ThankYouView";
 
 const Home = () => {
   const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false); // State for loading screen
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,6 +33,7 @@ const Home = () => {
     setFormData((prevData) => ({ ...prevData, ...newData }));
     if (step === 3) {
       console.log("Submitting...");
+      setLoading(true); // Show loading screen
       // Trigger form submission when step 3 is completed
       setTimeout(() => {
         formRef.current.requestSubmit();
@@ -72,6 +75,7 @@ const Home = () => {
           setTimeout(() => {
             form.reset();
             setStep((prevStep) => prevStep + 1);
+            setLoading(false); // Hide loading screen
           }, 5000);
         } else {
           throw new Error("Failed to submit to Google Sheets");
@@ -81,6 +85,7 @@ const Home = () => {
       }
     } catch (error) {
       console.error("Error!", error.message);
+      setLoading(false); // Hide loading screen on error
     }
   };
 
@@ -103,7 +108,7 @@ const Home = () => {
             <CustomBackButton
               text="Back"
               onClick={handleBack}
-              className={`${step >= 4 ? "-z-10" : "z-20"}`}
+              className={`${step >= 4 ? "hidden" : "block"}`}
             >
               Back
             </CustomBackButton>
@@ -136,6 +141,7 @@ const Home = () => {
         ))}
         <button type="submit">Submit</button>
       </form>
+      {loading && <LoadingScreen />} {/* Show loading screen */}
     </div>
   );
 };
