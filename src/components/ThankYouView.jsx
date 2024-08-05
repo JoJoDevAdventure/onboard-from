@@ -11,9 +11,9 @@ const ThankYouView = ({ formData }) => (
     >  
       <h1 className="md:text-[72px] text-[48px] text-[#F6D31F] text-center">Thank you!<br/>We'll contact you soon.</h1>
 
-      <h1 className="text-[36px] md:text-[72px] text-[#F6D31F] mt-8 text-center">
-      BECOME A PLONKKAA TODAY
-      </h1>
+      <h2 className="text-[36px] md:text-[72px] text-[#F6D31F] mt-8 text-center">
+      Our designers work
+      </h2>
       <Carousel />
         </motion.div>
 );

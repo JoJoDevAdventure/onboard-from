@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 
-
 const PersonalInfoView = ({ onNext }) => {
   useEffect(() => {
     window.scrollTo({
@@ -19,12 +18,44 @@ const PersonalInfoView = ({ onNext }) => {
     linkedin: "",
   });
 
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    contact: false,
+    portfolio: false,
+    linkedin: false,
+  });
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    onNext(data);
+    const newErrors = {
+      name: !data.name,
+      email: !data.email,
+      contact: !data.contact,
+      portfolio: !data.portfolio,
+      linkedin: !data.linkedin,
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error);
+
+    if (!hasErrors) {
+      onNext(data);
+    } else {
+      setTimeout(() => {
+        setErrors({
+          name: false,
+          email: false,
+          contact: false,
+          portfolio: false,
+          linkedin: false,
+        });
+      }, 1500);
+    }
   };
 
   return (
@@ -46,7 +77,9 @@ const PersonalInfoView = ({ onNext }) => {
             placeholder="Name"
             value={data.name}
             onChange={handleChange}
-            className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+            className={`p-4 border ${
+              errors.name ? "border-red-500" : "border-[#F6D31F]"
+            } bg-transparent rounded-full text-white placeholder-white w-full`}
           />
         </div>
 
@@ -58,7 +91,9 @@ const PersonalInfoView = ({ onNext }) => {
             placeholder="Email"
             value={data.email}
             onChange={handleChange}
-            className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+            className={`p-4 border ${
+              errors.email ? "border-red-500" : "border-[#F6D31F]"
+            } bg-transparent rounded-full text-white placeholder-white w-full`}
           />
         </div>
 
@@ -70,7 +105,9 @@ const PersonalInfoView = ({ onNext }) => {
             placeholder="Contact Number"
             value={data.contact}
             onChange={handleChange}
-            className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+            className={`p-4 border ${
+              errors.contact ? "border-red-500" : "border-[#F6D31F]"
+            } bg-transparent rounded-full text-white placeholder-white w-full`}
           />
         </div>
 
@@ -82,7 +119,9 @@ const PersonalInfoView = ({ onNext }) => {
             placeholder="Portfolio"
             value={data.portfolio}
             onChange={handleChange}
-            className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+            className={`p-4 border ${
+              errors.portfolio ? "border-red-500" : "border-[#F6D31F]"
+            } bg-transparent rounded-full text-white placeholder-white w-full`}
           />
         </div>
 
@@ -94,7 +133,9 @@ const PersonalInfoView = ({ onNext }) => {
             placeholder="LinkedIn"
             value={data.linkedin}
             onChange={handleChange}
-            className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+            className={`p-4 border ${
+              errors.linkedin ? "border-red-500" : "border-[#F6D31F]"
+            } bg-transparent rounded-full text-white placeholder-white w-full`}
             required
           />
         </div>

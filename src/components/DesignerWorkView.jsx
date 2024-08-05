@@ -6,6 +6,7 @@ import CustomCheckbox from "./CustomCheckbox"; // Import the CustomCheckbox comp
 const DesignerWorkView = ({ onNext }) => {
   const [selectedMarketTargets, setSelectedMarketTargets] = useState([]);
   const [commissionRate, setCommissionRate] = useState("");
+  const [isCommissionBasedModel, setIsCommissionBasedModel] = useState(false);
 
   const toggleMarketTarget = (target) => {
     setSelectedMarketTargets((prev) =>
@@ -23,7 +24,12 @@ const DesignerWorkView = ({ onNext }) => {
     onNext({
       selectedMarketTargets,
       commissionRate,
+      isCommissionBasedModel,
     });
+
+  const toggleCommissionBasedModel = () => {
+    setIsCommissionBasedModel((prev) => !prev);
+  };
 
   useEffect(() => {
     window.scrollTo({
@@ -67,13 +73,19 @@ const DesignerWorkView = ({ onNext }) => {
       </div>
 
       <div className="flex flex-col items-start gap-4 mb-4 w-[90%] md:w-[50%]">
+        <CustomCheckbox
+          value="isCommissionBasedModel"
+          checked={isCommissionBasedModel}
+          onChange={toggleCommissionBasedModel}
+          label="I am comfortable with compensation through a commission-based model"
+        />
         <label htmlFor="commissionRate" className="text-white text-xl md:text-2xl">
-          Commission Rate (%)
+        What commission rate are you expecting for each sale of your design?
         </label>
         <input
           type="number"
           name="commissionRate"
-          placeholder="Enter your commission rate"
+          placeholder="Enter your commission rate %"
           value={commissionRate}
           onChange={handleChange}
           className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
