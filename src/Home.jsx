@@ -11,7 +11,6 @@ import ThankYouView from "./components/ThankYouView";
 
 const Home = () => {
   const [step, setStep] = useState(0);
-  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +22,7 @@ const Home = () => {
     designStyle: [],
     selectedMarketTargets: [],
     commissionRate: "",
+    isCommissionBasedModel: false,
   });
 
   const formRef = useRef(null);
@@ -70,12 +70,10 @@ const Home = () => {
 
         if (googleResponse.ok) {
           setTimeout(() => {
-      
+            form.reset();
+            setStep((prevStep) => prevStep + 1);
           }, 5000);
-          form.reset();
-          setStep((prevStep) => prevStep + 1);
         } else {
-          
           throw new Error("Failed to submit to Google Sheets");
         }
       } else {
@@ -83,7 +81,6 @@ const Home = () => {
       }
     } catch (error) {
       console.error("Error!", error.message);
-      setMessage(`Error: ${error.message}`);
     }
   };
 
@@ -106,7 +103,7 @@ const Home = () => {
             <CustomBackButton
               text="Back"
               onClick={handleBack}
-              className={`top-8 left-40 absolute ${ step >= 4 ? "-z-10" : "z-20"}`}
+              className={`${step >= 4 ? "-z-10" : "z-20"}`}
             >
               Back
             </CustomBackButton>
@@ -128,9 +125,11 @@ const Home = () => {
             key={key}
             name={key}
             value={
-              typeof formData[key] === "string"
-                ? formData[key]
-                : formData[key].join(", ")
+              Array.isArray(formData[key])
+                ? formData[key].join(", ")
+                : typeof formData[key] === "boolean"
+                ? formData[key] ? "Yes" : "No"
+                : formData[key]
             }
             readOnly
           />

@@ -21,7 +21,7 @@ const ProgressBar = ({ step, onStepChange }) => {
           <motion.div
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
-            onClick={() => onStepChange(index)}
+            onClick={{}}
             className={`w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center cursor-pointer ${
               index <= step ? "bg-yellow-500" : "bg-white"
             } m-1`}
