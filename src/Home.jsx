@@ -49,39 +49,22 @@ const Home = () => {
     const form = e.target;
     const formData = new FormData(form);
 
-    // Append access key for email submission
-    formData.append("access_key", "fbd9f17e-093c-4058-b3f9-ba3566bd37a3");
-
     try {
-      // Submit to Web3Forms for email
-      const emailResponse = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+      // Submit to Google Sheets
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxoV8A2o8YSNJhpDrzlCnCJUIgr9OwrB6BeAVt9K05Yi4MejcDATxOprdPazsof8lqe/exec';
+      const googleResponse = await fetch(scriptURL, {
+        method: 'POST',
+        body: formData
       });
-      const emailData = await emailResponse.json();
 
-      // Check response from Web3Forms
-      if (emailData.success) {
-        // Submit to Google Sheets
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxoV8A2o8YSNJhpDrzlCnCJUIgr9OwrB6BeAVt9K05Yi4MejcDATxOprdPazsof8lqe/exec';
-        const googleFormData = new FormData(form); // Use a new FormData object for Google Sheets
-
-        const googleResponse = await fetch(scriptURL, {
-          method: 'POST',
-          body: googleFormData
-        });
-
-        if (googleResponse.ok) {
-          setTimeout(() => {
-            form.reset();
-            setStep((prevStep) => prevStep + 1);
-            setLoading(false); // Hide loading screen
-          }, 5000);
-        } else {
-          throw new Error("Failed to submit to Google Sheets");
-        }
+      if (googleResponse.ok) {
+        setTimeout(() => {
+          form.reset();
+          setStep((prevStep) => prevStep + 1);
+          setLoading(false); // Hide loading screen
+        }, 5000);
       } else {
-        throw new Error(emailData.message);
+        throw new Error("Failed to submit to Google Sheets");
       }
     } catch (error) {
       console.error("Error!", error.message);
