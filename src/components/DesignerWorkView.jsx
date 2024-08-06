@@ -7,6 +7,7 @@ const DesignerWorkView = ({ onNext }) => {
   const [selectedMarketTargets, setSelectedMarketTargets] = useState([]);
   const [commissionRate, setCommissionRate] = useState("");
   const [isCommissionBasedModel, setIsCommissionBasedModel] = useState(false);
+  const [isCommissionRateValid, setIsCommissionRateValid] = useState(true); // State to track the validity of the commission rate
 
   const toggleMarketTarget = (target) => {
     setSelectedMarketTargets((prev) =>
@@ -20,12 +21,20 @@ const DesignerWorkView = ({ onNext }) => {
     setCommissionRate(e.target.value);
   };
 
-  const handleSubmit = () =>
-    onNext({
-      selectedMarketTargets,
-      commissionRate,
-      isCommissionBasedModel,
-    });
+  const handleSubmit = () => {
+    if (commissionRate === "") {
+      setIsCommissionRateValid(false);
+      setTimeout(() => {
+        setIsCommissionRateValid(true);
+      }, 1500); // Reset to valid state after 1.5 seconds
+    } else {
+      onNext({
+        selectedMarketTargets,
+        commissionRate,
+        isCommissionBasedModel,
+      });
+    }
+  };
 
   const toggleCommissionBasedModel = () => {
     setIsCommissionBasedModel((prev) => !prev);
@@ -93,7 +102,9 @@ products listed?
           placeholder="Enter your commission rate %"
           value={commissionRate}
           onChange={handleChange}
-          className="p-4 border border-[#F6D31F] bg-transparent rounded-full text-white placeholder-white w-full"
+          className={`p-4 border ${
+            isCommissionRateValid ? "border-[#F6D31F]" : "border-red-500"
+          } bg-transparent rounded-full text-white placeholder-white w-full`}
         />
       </div>
 
